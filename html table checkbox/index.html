@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>yusata employee status</title>
+<style>
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+td, th {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+	<table id="Table1">
+		<tr>
+			<th>&nbsp;</th>
+			<th style="width: 80px">Employee Id</th>
+			<th style="width: 120px">Name</th>
+			<th style="width: 120px">Location</th>
+			<th style="width: 120px">Status</th>
+		</tr>
+		<tr>
+			<td><input type="checkbox" /></td>
+			<td>1</td>
+			<td>manoj kumar</td>
+			<td>Odisha</td>
+			<td>Active</td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" /></td>
+			<td>2</td>
+			<td>Rajesh Mallick</td>
+			<td>Himalaya</td>
+			<td>Active</td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" /></td>
+			<td>3</td>
+			<td>Smruti Pattanaik</td>
+			<td>jammu</td>
+			<td>Inactive</td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" /></td>
+			<td>4</td>
+			<td>Arpita Vanja</td>
+			<td>Assam</td>
+			<td>Active</td>
+		</tr>
+	</table>
+	<br />
+	<input type="button" value="Get Selected" onclick="GetSelected()" />
+
+	<script type="text/javascript">
+		function GetSelected() {
+			//Reference the Table.
+			var grid = document.getElementById("Table1");
+			//Reference the CheckBoxes in Table.
+			var checkBoxes = grid.getElementsByTagName("INPUT");
+			var message = "id  Name            location        Status\n ";
+			//Loop through the CheckBoxes.
+			for (var i = 0; i < checkBoxes.length; i++) {
+				if (checkBoxes[i].checked) {
+					var row = checkBoxes[i].parentNode.parentNode;
+					message += row.cells[1].innerHTML;
+					message += "   " + row.cells[2].innerHTML;
+					message += "   " + row.cells[3].innerHTML;
+					message += "   " + row.cells[4].innerHTML;
+					message += "\n";
+				}
+			}
+			//Display selected Row data in Alert Box.
+			alert(message);
+		}
+	</script>
+</body>
+</html>
